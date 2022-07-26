@@ -16,9 +16,17 @@ for (let i = 1 ; i <= 16 ; i++) {
 };
 
 for (let i = 0; i < cells.length ; i++) {
-    // function func() { console.log(cells[i].id);};
-    // cells[i].onclick = console.log(cells[i].id);
+    let cellLightness = 50;
     cells[i].addEventListener('mouseover', () => {
-        cells[i].style.backgroundColor = "black";
+        function randomInteger(max) {
+            return Math.floor(Math.random()*(max + 1));
+        };
+        function randomColor() {
+            let hue = randomInteger(360);
+            let sat = randomInteger(100);
+            return `hsl(${hue},${sat}%,${cellLightness}%)`;
+        };
+        cells[i].style.backgroundColor = randomColor();
+        cellLightness -= 5;
       });
 };
